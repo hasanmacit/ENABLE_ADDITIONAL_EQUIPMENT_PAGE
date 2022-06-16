@@ -1,12 +1,14 @@
 TR
 
 Official servere gelen envanter güncellemesini sizinle paylaşmaya çalıştım. Anlatım biraz karışık gelebilir. Dün geceden beri uğraştığım için atladığım yerler de olabilir.
-Aldığınız hataları yorumlarda belirtmeyi unutmayınız.
+Aldığınız hataları yorumlarda belirtmeyi unutmayınız. Üstteki butonlar işlevsizdir.
 
 EN
 
 I tried to share the inventory update from the official server with you. The explanation might sound a little confusing. There may be some places I missed because I've been struggling since last night.
-Do not forget to indicate the errors you receive in the comments.
+Do not forget to indicate the errors you receive in the comments. The buttons above are useless.
+
+
 
 uiequipmentdialog.py Şu sistemlere uyarlıdır
 
