@@ -562,7 +562,7 @@ class EquipmentDialog(ui.ScriptWindow):
 			attachedSlotPos = mouseModule.mouseController.GetAttachedSlotNumber()
 			attachedItemVID = mouseModule.mouseController.GetAttachedItemIndex()
 
-			if player.SLOT_TYPE_INVENTORY == attachedSlotType
+			if player.SLOT_TYPE_INVENTORY == attachedSlotType:
 			#@fixme011 BEGIN (block ds equip)
 				attachedInvenType = player.SlotTypeToInvenType(attachedSlotType)
 				if player.IsDSEquipmentSlot(attachedInvenType, attachedSlotPos):
