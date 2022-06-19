@@ -19,12 +19,12 @@ import localeInfo
 import constInfo
 import ime
 import wndMgr
-import uiPickEtc
+# import uiPickEtc
 import uiToolTip
 import interfaceModule
-if app.ENABLE_OFFLINE_SHOP_SYSTEM:
-	import uiOfflineShop
-	import uiOfflineShopBuilder
+# if app.ENABLE_OFFLINE_SHOP_SYSTEM:
+	# import uiOfflineShop
+	# import uiOfflineShopBuilder
 
 ITEM_FLAG_APPLICABLE = 1 << 14
 
@@ -98,11 +98,11 @@ class CostumeWindow(ui.ScriptWindow):
 			slotNumber = item.COSTUME_SLOT_START + i
 			self.wndEquip.SetItemSlot(slotNumber, getItemVNum(slotNumber), 0)
 
-			if app.BL_TRANSMUTATION_SYSTEM:
-				if not player.GetChangeLookVnum(player.EQUIPMENT, slotNumber) == 0:
-					self.wndEquip.SetSlotCoverImage(slotNumber,"icon/item/ingame_convert_Mark.tga")
-				else:
-					self.wndEquip.EnableSlotCoverImage(slotNumber,False)
+			# if app.BL_TRANSMUTATION_SYSTEM:
+				# if not player.GetChangeLookVnum(player.EQUIPMENT, slotNumber) == 0:
+					# self.wndEquip.SetSlotCoverImage(slotNumber,"icon/item/ingame_convert_Mark.tga")
+				# else:
+					# self.wndEquip.EnableSlotCoverImage(slotNumber,False)
 
 		if app.ENABLE_WEAPON_COSTUME_SYSTEM:
 			self.wndEquip.SetItemSlot(item.COSTUME_SLOT_WEAPON, getItemVNum(item.COSTUME_SLOT_WEAPON), 0)
@@ -172,10 +172,10 @@ class EquipmentDialog(ui.ScriptWindow):
 			self.DSSButton = self.GetChild2("dragon_soul_button")
 			self.costumeButton = self.GetChild2("costume_button")
 
-			if app.ENABLE_OFFLINE_SHOP_SYSTEM:
-				self.OPSButton = self.GetChild2("OPSButton")
-				self.OPSButton.ShowToolTip = lambda arg=1: self.OverInButton(arg)
-				self.OPSButton.HideToolTip = lambda arg=1: self.OverOutButton()
+			# if app.ENABLE_OFFLINE_SHOP_SYSTEM:
+				# self.OPSButton = self.GetChild2("OPSButton")
+				# self.OPSButton.ShowToolTip = lambda arg=1: self.OverInButton(arg)
+				# self.OPSButton.HideToolTip = lambda arg=1: self.OverOutButton()
 
 			self.toolTip = uiToolTip.ToolTip()
 			self.toolTip.ClearToolTip()
@@ -231,9 +231,9 @@ class EquipmentDialog(ui.ScriptWindow):
 		if self.DSSButton:
 			self.DSSButton.SetEvent(ui.__mem_func__(self.ClickDSSButton))
 
-		if app.ENABLE_OFFLINE_SHOP_SYSTEM:
-			if self.OPSButton:
-				self.OPSButton.SetEvent(ui.__mem_func__(self.ClickOPSButton))
+		# if app.ENABLE_OFFLINE_SHOP_SYSTEM:
+			# if self.OPSButton:
+				# self.OPSButton.SetEvent(ui.__mem_func__(self.ClickOPSButton))
 
 		# Costume Button
 		if self.costumeButton:
@@ -265,8 +265,8 @@ class EquipmentDialog(ui.ScriptWindow):
 		self.tooltipItem = None
 		self.page1 = 0
 		self.page2 = 0
-		if app.ENABLE_OFFLINE_SHOP_SYSTEM:
-			self.OPSButton = None
+		# if app.ENABLE_OFFLINE_SHOP_SYSTEM:
+			# self.OPSButton = None
 
 		if self.wndCostume:
 			self.wndCostume.Destroy()
@@ -332,13 +332,13 @@ class EquipmentDialog(ui.ScriptWindow):
 		print "click_dss_button"
 		self.interface.ToggleDragonSoulWindow()
 
-	if app.ENABLE_OFFLINE_SHOP_SYSTEM:
-		# OPSButton
-		def ClickOPSButton(self):
-			if constInfo.GET_ITEM_QUESTION_DIALOG_STATUS() == 1:
-				return
+	# if app.ENABLE_OFFLINE_SHOP_SYSTEM:
+		OPSButton
+		# def ClickOPSButton(self):
+			# if constInfo.GET_ITEM_QUESTION_DIALOG_STATUS() == 1:
+				# return
 
-			net.SendChatPacket("/open_offlineshop")
+			# net.SendChatPacket("/open_offlineshop")
 
 	def ClickCostumeButton(self):
 		print "Click Costume Button"
@@ -360,11 +360,11 @@ class EquipmentDialog(ui.ScriptWindow):
 		if player.IsEquipmentSlot(local) or player.IsCostumeSlot(local) or (app.ENABLE_NEW_EQUIPMENT_SYSTEM and player.IsBeltInventorySlot(local)):
 			return local
 
-		if app.ENABLE_SPECIAL_INVENTORY_SYSTEM:
-			if player.IsSkillBookInventorySlot(local) or player.IsUpgradeItemsInventorySlot(local) or\
-				player.IsStoneInventorySlot(local) or player.IsGiftBoxInventorySlot(local) or\
-				player.IsChangersInventorySlot(local):
-				return local
+		# if app.ENABLE_SPECIAL_INVENTORY_SYSTEM:
+			# if player.IsSkillBookInventorySlot(local) or player.IsUpgradeItemsInventorySlot(local) or\
+				# player.IsStoneInventorySlot(local) or player.IsGiftBoxInventorySlot(local) or\
+				# player.IsChangersInventorySlot(local):
+				# return local
 
 		return self.inventoryPageIndex*player.INVENTORY_PAGE_SIZE + local
 
@@ -400,11 +400,11 @@ class EquipmentDialog(ui.ScriptWindow):
 				itemCount = 0
 			setItemVNum(slotNumber, getItemVNum(slotNumber), itemCount)
 			self.wndUnique.SetItemSlot(slotNumber, getItemVNum(slotNumber), 0)
-			if app.BL_TRANSMUTATION_SYSTEM:
-				if not player.GetChangeLookVnum(player.EQUIPMENT, slotNumber) == 0:
-					self.wndEquip.SetSlotCoverImage(slotNumber,"icon/item/ingame_convert_Mark.tga")
-				else:
-					self.wndEquip.EnableSlotCoverImage(slotNumber,False)
+			# if app.BL_TRANSMUTATION_SYSTEM:
+				# if not player.GetChangeLookVnum(player.EQUIPMENT, slotNumber) == 0:
+					# self.wndEquip.SetSlotCoverImage(slotNumber,"icon/item/ingame_convert_Mark.tga")
+				# else:
+					# self.wndEquip.EnableSlotCoverImage(slotNumber,False)
 
 		if app.ENABLE_NEW_EQUIPMENT_SYSTEM:
 			for i in xrange(player.NEW_EQUIPMENT_SLOT_COUNT):
@@ -441,42 +441,42 @@ class EquipmentDialog(ui.ScriptWindow):
 	def SetItemToolTip(self, tooltipItem):
 		self.tooltipItem = tooltipItem
 
-	if app.BL_TRANSMUTATION_SYSTEM:
-		def IsDlgQuestionShow(self):
-			if self.dlgQuestion.IsShow():
-				return True
-			else:
-				return False
+	# if app.BL_TRANSMUTATION_SYSTEM:
+		# def IsDlgQuestionShow(self):
+			# if self.dlgQuestion.IsShow():
+				# return True
+			# else:
+				# return False
 		
-		def CancelDlgQuestion(self):
-			self.__Cancel()
+		# def CancelDlgQuestion(self):
+			# self.__Cancel()
 		
-		def __OpenQuestionDialog(self, srcItemPos, dstItemPos):
-			if self.interface.IsShowDlgQuestionWindow():
-				self.interface.CloseDlgQuestionWindow()
+		# def __OpenQuestionDialog(self, srcItemPos, dstItemPos):
+			# if self.interface.IsShowDlgQuestionWindow():
+				# self.interface.CloseDlgQuestionWindow()
 				
-			getItemVNum=player.GetItemIndex
-			self.srcItemPos = srcItemPos
-			self.dstItemPos = dstItemPos
+			# getItemVNum=player.GetItemIndex
+			# self.srcItemPos = srcItemPos
+			# self.dstItemPos = dstItemPos
 			
-			self.dlgQuestion.SetAcceptEvent(ui.__mem_func__(self.__Accept))
-			self.dlgQuestion.SetCancelEvent(ui.__mem_func__(self.__Cancel))
+			# self.dlgQuestion.SetAcceptEvent(ui.__mem_func__(self.__Accept))
+			# self.dlgQuestion.SetCancelEvent(ui.__mem_func__(self.__Cancel))
 
-			self.dlgQuestion.SetText1("%s" % item.GetItemName(getItemVNum(srcItemPos)) )
-			self.dlgQuestion.SetText2(localeInfo.INVENTORY_REALLY_USE_ITEM)
+			# self.dlgQuestion.SetText1("%s" % item.GetItemName(getItemVNum(srcItemPos)) )
+			# self.dlgQuestion.SetText2(localeInfo.INVENTORY_REALLY_USE_ITEM)
 
-			self.dlgQuestion.Open()
+			# self.dlgQuestion.Open()
 			
-		def __Accept(self):
-			self.dlgQuestion.Close()
-			self.__SendUseItemToItemPacket(self.srcItemPos, self.dstItemPos)
-			self.srcItemPos = (0, 0)
-			self.dstItemPos = (0, 0)
+		# def __Accept(self):
+			# self.dlgQuestion.Close()
+			# self.__SendUseItemToItemPacket(self.srcItemPos, self.dstItemPos)
+			# self.srcItemPos = (0, 0)
+			# self.dstItemPos = (0, 0)
 
-		def __Cancel(self):
-			self.srcItemPos = (0, 0)
-			self.dstItemPos = (0, 0)
-			self.dlgQuestion.Close()
+		# def __Cancel(self):
+			# self.srcItemPos = (0, 0)
+			# self.dstItemPos = (0, 0)
+			# self.dlgQuestion.Close()
 
 	def SellItem(self):
 		if self.sellingSlotitemIndex == player.GetItemIndex(self.sellingSlotNumber):
@@ -516,12 +516,7 @@ class EquipmentDialog(ui.ScriptWindow):
 			attachedItemIndex = mouseModule.mouseController.GetAttachedItemIndex()
 
 			# if app.ENABLE_SPECIAL_INVENTORY_SYSTEM:
-			if player.SLOT_TYPE_INVENTORY == attachedSlotType or\
-				player.SLOT_TYPE_SKILL_BOOK_INVENTORY == attachedSlotType or\
-				player.SLOT_TYPE_UPGRADE_ITEMS_INVENTORY == attachedSlotType or\
-				player.SLOT_TYPE_STONE_INVENTORY == attachedSlotType or\
-				player.SLOT_TYPE_GIFT_BOX_INVENTORY == attachedSlotType or\
-				player.SLOT_TYPE_CHANGERS_INVENTORY == attachedSlotType:
+			if player.SLOT_TYPE_INVENTORY == attachedSlotType:
 				#@fixme011 BEGIN (block ds equip)
 				attachedInvenType = player.SlotTypeToInvenType(attachedSlotType)
 				if player.IsDSEquipmentSlot(attachedInvenType, attachedSlotPos):
@@ -567,20 +562,14 @@ class EquipmentDialog(ui.ScriptWindow):
 			attachedSlotPos = mouseModule.mouseController.GetAttachedSlotNumber()
 			attachedItemVID = mouseModule.mouseController.GetAttachedItemIndex()
 
-			if app.ENABLE_SPECIAL_INVENTORY_SYSTEM:
-				if player.SLOT_TYPE_INVENTORY == attachedSlotType or\
-					player.SLOT_TYPE_SKILL_BOOK_INVENTORY == attachedSlotType or\
-					player.SLOT_TYPE_UPGRADE_ITEMS_INVENTORY == attachedSlotType or\
-					player.SLOT_TYPE_STONE_INVENTORY == attachedSlotType or\
-					player.SLOT_TYPE_GIFT_BOX_INVENTORY == attachedSlotType or\
-					player.SLOT_TYPE_CHANGERS_INVENTORY == attachedSlotType:
-				#@fixme011 BEGIN (block ds equip)
-					attachedInvenType = player.SlotTypeToInvenType(attachedSlotType)
-					if player.IsDSEquipmentSlot(attachedInvenType, attachedSlotPos):
-						mouseModule.mouseController.DeattachObject()
-						return
-					#@fixme011 END
-					self.__DropSrcItemToDestItemInInventory(attachedItemVID, attachedSlotPos, itemSlotIndex)
+			if player.SLOT_TYPE_INVENTORY == attachedSlotType
+			#@fixme011 BEGIN (block ds equip)
+				attachedInvenType = player.SlotTypeToInvenType(attachedSlotType)
+				if player.IsDSEquipmentSlot(attachedInvenType, attachedSlotPos):
+					mouseModule.mouseController.DeattachObject()
+					return
+				#@fixme011 END
+				self.__DropSrcItemToDestItemInInventory(attachedItemVID, attachedSlotPos, itemSlotIndex)
 
 			mouseModule.mouseController.DeattachObject()
 
@@ -667,11 +656,11 @@ class EquipmentDialog(ui.ScriptWindow):
 		else:
 			#snd.PlaySound("sound/ui/drop.wav")
 
-			if app.BL_TRANSMUTATION_SYSTEM:
-				if item.IsChangeLookClearScroll(srcItemVID):
-					if player.CanChangeLookClearItem(srcItemVID, player.INVENTORY, dstItemSlotPos):
-						self.__OpenQuestionDialog(srcItemSlotPos, dstItemSlotPos)
-						return
+			# if app.BL_TRANSMUTATION_SYSTEM:
+				# if item.IsChangeLookClearScroll(srcItemVID):
+					# if player.CanChangeLookClearItem(srcItemVID, player.INVENTORY, dstItemSlotPos):
+						# self.__OpenQuestionDialog(srcItemSlotPos, dstItemSlotPos)
+						# return
 
 			if player.IsEquipmentSlot(dstItemSlotPos):
 
@@ -825,33 +814,18 @@ class EquipmentDialog(ui.ScriptWindow):
 
 		if mouseModule.mouseController.isAttached():
 			attachedItemType = mouseModule.mouseController.GetAttachedType()
-			if app.ENABLE_SPECIAL_INVENTORY_SYSTEM:
-				if player.SLOT_TYPE_INVENTORY == attachedItemType or\
-					player.SLOT_TYPE_SKILL_BOOK_INVENTORY == attachedItemType or\
-					player.SLOT_TYPE_UPGRADE_ITEMS_INVENTORY == attachedItemType or\
-					player.SLOT_TYPE_STONE_INVENTORY == attachedItemType or\
-					player.SLOT_TYPE_GIFT_BOX_INVENTORY == attachedItemType or\
-					player.SLOT_TYPE_CHANGERS_INVENTORY == attachedItemType:
+			if player.SLOT_TYPE_INVENTORY == attachedItemType:
 
-					attachedSlotPos = mouseModule.mouseController.GetAttachedSlotNumber()
-					attachedItemVNum = mouseModule.mouseController.GetAttachedItemIndex()
+				attachedSlotPos = mouseModule.mouseController.GetAttachedSlotNumber()
+				attachedItemVNum = mouseModule.mouseController.GetAttachedItemIndex()
 
-					if attachedItemVNum==player.ITEM_MONEY: # @fixme005
-						pass
+				if attachedItemVNum==player.ITEM_MONEY: # @fixme005
+					pass
 
-					elif self.__CanUseSrcItemToDstItem(attachedItemVNum, attachedSlotPos, overSlotPosGlobal):
-						self.wndEquip.SetUsableItem(True)
-						self.ShowToolTip(overSlotPosGlobal)
-						return
-			else:
-				if player.SLOT_TYPE_INVENTORY == attachedItemType:
-					attachedSlotPos = mouseModule.mouseController.GetAttachedSlotNumber()
-					attachedItemVNum = mouseModule.mouseController.GetAttachedItemIndex()
-
-					if self.__CanUseSrcItemToDstItem(attachedItemVNum, attachedSlotPos, overSlotPosGlobal):
-						self.wndEquip.SetUsableItem(True)
-						self.ShowToolTip(overSlotPosGlobal)
-						return
+				elif self.__CanUseSrcItemToDstItem(attachedItemVNum, attachedSlotPos, overSlotPosGlobal):
+					self.wndEquip.SetUsableItem(True)
+					self.ShowToolTip(overSlotPosGlobal)
+					return
 
 		self.ShowToolTip(overSlotPosGlobal)
 
@@ -880,9 +854,9 @@ class EquipmentDialog(ui.ScriptWindow):
 			return True
 		else:
 
-			if app.BL_TRANSMUTATION_SYSTEM:
-				if item.IsChangeLookClearScroll(srcItemVNum):
-					return True
+			# if app.BL_TRANSMUTATION_SYSTEM:
+				# if item.IsChangeLookClearScroll(srcItemVNum):
+					# return True
 
 			if item.GetUseType(srcItemVNum) in self.USE_TYPE_TUPLE:
 				return True
@@ -927,9 +901,9 @@ class EquipmentDialog(ui.ScriptWindow):
 
 		else:
 
-			if app.BL_TRANSMUTATION_SYSTEM:
-				if player.CanChangeLookClearItem(srcItemVNum, player.INVENTORY, dstSlotPos):
-					return True
+			# if app.BL_TRANSMUTATION_SYSTEM:
+				# if player.CanChangeLookClearItem(srcItemVNum, player.INVENTORY, dstSlotPos):
+					# return True
 
 			useType=item.GetUseType(srcItemVNum)
 
@@ -1116,14 +1090,14 @@ class EquipmentDialog(ui.ScriptWindow):
 			chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.USE_ITEM_FAILURE_PRIVATE_SHOP)
 			return
 
-		if app.ENABLE_OFFLINE_SHOP_SYSTEM:
-			if uiOfflineShopBuilder.IsBuildingOfflineShop():
-				chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.USE_ITEM_FAILURE_PRIVATE_SHOP)
-				return
+		# if app.ENABLE_OFFLINE_SHOP_SYSTEM:
+			# if uiOfflineShopBuilder.IsBuildingOfflineShop():
+				# chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.USE_ITEM_FAILURE_PRIVATE_SHOP)
+				# return
 
-			if uiOfflineShop.IsEditingOfflineShop():
-				chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.USE_ITEM_FAILURE_PRIVATE_SHOP)
-				return
+			# if uiOfflineShop.IsEditingOfflineShop():
+				# chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.USE_ITEM_FAILURE_PRIVATE_SHOP)
+				# return
 
 		net.SendItemUseToItemPacket(srcSlotPos, dstSlotPos)
 
@@ -1132,14 +1106,14 @@ class EquipmentDialog(ui.ScriptWindow):
 			chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.USE_ITEM_FAILURE_PRIVATE_SHOP)
 			return
 
-		if app.ENABLE_OFFLINE_SHOP_SYSTEM:
-			if uiOfflineShopBuilder.IsBuildingOfflineShop():
-				chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.USE_ITEM_FAILURE_PRIVATE_SHOP)
-				return
+		# if app.ENABLE_OFFLINE_SHOP_SYSTEM:
+			# if uiOfflineShopBuilder.IsBuildingOfflineShop():
+				# chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.USE_ITEM_FAILURE_PRIVATE_SHOP)
+				# return
 
-			if uiOfflineShop.IsEditingOfflineShop():
-				chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.USE_ITEM_FAILURE_PRIVATE_SHOP)
-				return
+			# if uiOfflineShop.IsEditingOfflineShop():
+				# chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.USE_ITEM_FAILURE_PRIVATE_SHOP)
+				# return
 
 		net.SendItemUsePacket(slotPos)
 
@@ -1148,14 +1122,14 @@ class EquipmentDialog(ui.ScriptWindow):
 			chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.MOVE_ITEM_FAILURE_PRIVATE_SHOP)
 			return
 
-		if app.ENABLE_OFFLINE_SHOP_SYSTEM:
-			if uiOfflineShopBuilder.IsBuildingOfflineShop():
-				chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.MOVE_ITEM_FAILURE_PRIVATE_SHOP)
-				return
+		# if app.ENABLE_OFFLINE_SHOP_SYSTEM:
+			# if uiOfflineShopBuilder.IsBuildingOfflineShop():
+				# chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.MOVE_ITEM_FAILURE_PRIVATE_SHOP)
+				# return
 
-			if uiOfflineShop.IsEditingOfflineShop():
-				chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.MOVE_ITEM_FAILURE_PRIVATE_SHOP)
-				return
+			# if uiOfflineShop.IsEditingOfflineShop():
+				# chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.MOVE_ITEM_FAILURE_PRIVATE_SHOP)
+				# return
 
 		net.SendItemMovePacket(srcSlotPos, dstSlotPos, srcItemCount)
 
@@ -1163,18 +1137,18 @@ class EquipmentDialog(ui.ScriptWindow):
 		if app.ENABLE_DRAGON_SOUL_SYSTEM:
 			self.wndDragonSoulRefine = wndDragonSoulRefine
 
-	if app.BL_TRANSMUTATION_SYSTEM:
-		def __AddHighlightSlotChangeLook(self, slotIndex):
-			if not slotIndex in self.listHighlightedChangeLookSlot:
-				self.listHighlightedChangeLookSlot.append(slotIndex)
+	# if app.BL_TRANSMUTATION_SYSTEM:
+		# def __AddHighlightSlotChangeLook(self, slotIndex):
+			# if not slotIndex in self.listHighlightedChangeLookSlot:
+				# self.listHighlightedChangeLookSlot.append(slotIndex)
 
-		def __DelHighlightSlotChangeLook(self, slotIndex):
-			if slotIndex in self.listHighlightedChangeLookSlot:
-				if slotIndex >= player.INVENTORY_PAGE_SIZE:
-					self.wndEquip.DeactivateSlot(slotIndex - (self.inventoryPageIndex * player.INVENTORY_PAGE_SIZE) )
-				else:
-					self.wndEquip.DeactivateSlot(slotIndex)
-				self.listHighlightedChangeLookSlot.remove(slotIndex)
+		# def __DelHighlightSlotChangeLook(self, slotIndex):
+			# if slotIndex in self.listHighlightedChangeLookSlot:
+				# if slotIndex >= player.INVENTORY_PAGE_SIZE:
+					# self.wndEquip.DeactivateSlot(slotIndex - (self.inventoryPageIndex * player.INVENTORY_PAGE_SIZE) )
+				# else:
+					# self.wndEquip.DeactivateSlot(slotIndex)
+				# self.listHighlightedChangeLookSlot.remove(slotIndex)
 
 	def OnMoveWindow(self, x, y):
 #		print "Inventory Global Pos : ", self.GetGlobalPosition()
@@ -1182,31 +1156,31 @@ class EquipmentDialog(ui.ScriptWindow):
 #			print "Belt Global Pos : ", self.wndBelt.GetGlobalPosition()
 			self.wndBelt.AdjustPositionAndSize()
 
-	if app.ENABLE_DROP_DIALOG_EXTENDED_SYSTEM:
-		def DeleteItem(self, slotPos, invenType):
-			itemIndex = player.GetItemIndex(invenType, slotPos)
-			item.SelectItem(itemIndex)
-			itemQuestionDialog2 = uiCommon.ItemQuestionDialog2()
-			itemQuestionDialog2.SetText('[%s] nesnesine ne yapmak istiyorsun?' % item.GetItemName())
-			itemQuestionDialog2.SetText2('(Fiyat: %s)' % localeInfo.NumberToMoneyString(item.GetISellItemPrice() * player.GetItemCount(invenType, slotPos) * 97 / 100))
-			itemQuestionDialog2.SetDeleteAcceptEvent(lambda arg = 0: self.__AnswerDeleteItem(arg))
-			itemQuestionDialog2.SetSellAcceptEvent(lambda arg = 1: self.__AnswerDeleteItem(arg))
-			itemQuestionDialog2.SetCancelEvent(lambda arg = 2: self.__AnswerDeleteItem(arg))
-			itemQuestionDialog2.Open()
-			itemQuestionDialog2.slotPos = slotPos
-			itemQuestionDialog2.invenType = invenType
-			self.itemQuestionDialog2 = itemQuestionDialog2
+	# if app.ENABLE_DROP_DIALOG_EXTENDED_SYSTEM:
+		# def DeleteItem(self, slotPos, invenType):
+			# itemIndex = player.GetItemIndex(invenType, slotPos)
+			# item.SelectItem(itemIndex)
+			# itemQuestionDialog2 = uiCommon.ItemQuestionDialog2()
+			# itemQuestionDialog2.SetText('[%s] nesnesine ne yapmak istiyorsun?' % item.GetItemName())
+			# itemQuestionDialog2.SetText2('(Fiyat: %s)' % localeInfo.NumberToMoneyString(item.GetISellItemPrice() * player.GetItemCount(invenType, slotPos) * 97 / 100))
+			# itemQuestionDialog2.SetDeleteAcceptEvent(lambda arg = 0: self.__AnswerDeleteItem(arg))
+			# itemQuestionDialog2.SetSellAcceptEvent(lambda arg = 1: self.__AnswerDeleteItem(arg))
+			# itemQuestionDialog2.SetCancelEvent(lambda arg = 2: self.__AnswerDeleteItem(arg))
+			# itemQuestionDialog2.Open()
+			# itemQuestionDialog2.slotPos = slotPos
+			# itemQuestionDialog2.invenType = invenType
+			# self.itemQuestionDialog2 = itemQuestionDialog2
 
-		def __AnswerDeleteItem(self, answer):
-			if not self.itemQuestionDialog2:
-				return
-			else:
-				if answer == 0:
-					net.SendItemDeletePacket(self.itemQuestionDialog2.slotPos, self.itemQuestionDialog2.invenType)
-					snd.PlaySound('sound/ui/drop.wav')
-				elif answer == 1:
-					net.SendItemSellPacket(self.itemQuestionDialog2.slotPos, self.itemQuestionDialog2.invenType)
-					snd.PlaySound('sound/ui/money.wav')
-				self.itemQuestionDialog2.Close()
-				self.itemQuestionDialog2 = None
-				return
+		# def __AnswerDeleteItem(self, answer):
+			# if not self.itemQuestionDialog2:
+				# return
+			# else:
+				# if answer == 0:
+					# net.SendItemDeletePacket(self.itemQuestionDialog2.slotPos, self.itemQuestionDialog2.invenType)
+					# snd.PlaySound('sound/ui/drop.wav')
+				# elif answer == 1:
+					# net.SendItemSellPacket(self.itemQuestionDialog2.slotPos, self.itemQuestionDialog2.invenType)
+					# snd.PlaySound('sound/ui/money.wav')
+				# self.itemQuestionDialog2.Close()
+				# self.itemQuestionDialog2 = None
+				# return
