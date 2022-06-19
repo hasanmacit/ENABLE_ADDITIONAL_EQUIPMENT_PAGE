@@ -209,7 +209,7 @@ class EquipmentDialog(ui.ScriptWindow):
 
 		self.board.SetCloseEvent(ui.__mem_func__(self.Close))
 
-		self.attachMetinDialog = uiAttachMetin.AttachMetinDialog(self)
+		self.attachMetinDialog = uiAttachMetin.AttachMetinDialog()
 		self.attachMetinDialog.Hide()
 
 		self.wndEquip = wndEquip
@@ -414,11 +414,11 @@ class EquipmentDialog(ui.ScriptWindow):
 					itemCount = 0
 				setItemVNum(slotNumber, getItemVNum(slotNumber), itemCount)
 				print "ENABLE_NEW_EQUIPMENT_SYSTEM", slotNumber, itemCount, getItemVNum(slotNumber)
-				if app.BL_TRANSMUTATION_SYSTEM:
-					if not player.GetChangeLookVnum(player.EQUIPMENT, slotNumber) == 0:
-						self.wndEquip.SetSlotCoverImage(slotNumber,"icon/item/ingame_convert_Mark.tga")
-					else:
-						self.wndEquip.EnableSlotCoverImage(slotNumber,False)
+				# if app.BL_TRANSMUTATION_SYSTEM:
+					# if not player.GetChangeLookVnum(player.EQUIPMENT, slotNumber) == 0:
+						# self.wndEquip.SetSlotCoverImage(slotNumber,"icon/item/ingame_convert_Mark.tga")
+					# else:
+						# self.wndEquip.EnableSlotCoverImage(slotNumber,False)
 
 		self.wndUnique.RefreshSlot()
 
