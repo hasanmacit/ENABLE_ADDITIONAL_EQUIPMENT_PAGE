@@ -103,6 +103,16 @@
 
 
 
+#arat
 
+	def RefreshItemSlot(self):
+		self.RefreshBagSlotWindow()
+		self.RefreshEquipSlotWindow()
+
+#değiştir
+
+	def RefreshItemSlot(self):
+		self.RefreshBagSlotWindow()
+		# self.RefreshEquipSlotWindow()
 
 
