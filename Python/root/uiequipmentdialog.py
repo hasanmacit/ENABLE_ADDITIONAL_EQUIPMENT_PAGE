@@ -333,7 +333,7 @@ class EquipmentDialog(ui.ScriptWindow):
 		self.interface.ToggleDragonSoulWindow()
 
 	# if app.ENABLE_OFFLINE_SHOP_SYSTEM:
-		OPSButton
+		# OPSButton
 		# def ClickOPSButton(self):
 			# if constInfo.GET_ITEM_QUESTION_DIALOG_STATUS() == 1:
 				# return
