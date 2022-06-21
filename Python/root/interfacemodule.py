@@ -72,7 +72,7 @@ self.wndInventory.RefreshItemSlot()
 		if app.ENABLE_ADDITIONAL_EQUIPMENT_PAGE:
 			self.wndEquip.RefreshItemSlot()
 
-#arat
+#arat (def ShowAllWindows)
 
 self.wndInventory.Show()
 
